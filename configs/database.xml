@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<configuration>
+    <database>
+        <adapter>Pdo_Mysql</adapter>
+		<params>
+			<host>localhost</host>
+			<username></username>
+			<password></password>
+			<dbname></dbname>
+		</params>
+    </database>
+   <database_viktor>
+        <adapter>Pdo_Mysql</adapter>
+		<params>
+			<host>localhost</host>
+			<username>root</username>
+			<password>pass</password>
+			<dbname>shellac</dbname>
+		</params>
+    </database_viktor>
+    <database_live>
+        <adapter>Pdo_Mysql</adapter>
+          <params>
+               <host>mysql52.hoster.ru</host>
+               <username>m53913</username>
+               <password>dPoH4jSg</password>
+               <dbname>db53913m</dbname>
+          </params>
+    </database_live>
+</configuration>

@@ -1,0 +1,104 @@
+* {
+	outline: 0;
+}
+
+body {
+	font: 11px tahoma;
+}
+
+a {
+	font: 11px tahoma;
+	color: #666;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.eve-page {
+	margin: 30px 0 0 0;
+}
+
+.eve-title {
+	border-bottom:1px solid #ddd;
+	color:#000;
+	font-size:16px;
+	font-weight:bold;
+	margin:0 5px;
+	padding:0 10px;
+}
+
+.eve-login {
+	width: 400px;
+	margin: 0 auto;
+	opacity: 0.7
+}
+
+.form {
+	clear: both;
+	display: block;
+	margin: 0 auto;
+	padding: 5px 10px;
+}
+
+.form input[type=text]:focus, input[type=password]:focus {
+	background: #edf6fb;
+	border: 1px solid #D7E9F3;
+}
+
+.form .form-item {
+	margin: 0 0 10px 0;
+	overflow: hidden;
+}
+
+.form .form-item textarea {
+	clear: both;
+	font: 11px arial;
+	color: #666;
+	padding: 3px 0;
+	width: 99%;
+	border: 1px solid #ddd;
+	min-height: 70px;
+}
+
+.form .form-item label {
+	display: block;
+	float: left;
+	font: 11px arial;
+	color: #666;
+	padding: 3px 0;
+	width: 99%;
+}
+
+.form .form-item select {
+	font: 11px arial;
+	color: #666;
+	border: 1px solid #ddd;
+	background:  #fff;
+}
+
+.form .form-item input[type=text], .form .form-item input[type=password]  {
+	display: block;
+	float: left;
+	font: 11px arial;
+	color: #666;
+	padding: 3px 0;
+	width: 99%;
+	border: 1px solid #ddd;
+}
+
+.error {
+	border-bottom: 3px solid #f00;
+	padding: 3px;
+	margin: 10px 0;
+}
+
+.success {
+	border-bottom: 3px solid #00f;
+	padding: 3px;
+	margin: 10px 0;
+}
+
+.display-none {
+	display: none;
+}
