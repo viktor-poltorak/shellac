@@ -1,0 +1,11 @@
+php_value session.auto_start 0
+php_value display_startup_errors 1
+php_value display_errors 1
+
+AddDefaultCharset UTF-8
+AddType 'text/html; charset=UTF-8' html
+
+RewriteEngine on
+RewriteBase /
+RewriteRule !\.(js|ico|txt|gif|jpg|jpeg|png|css|swf|/forum/|php|doc|xls|pdf|rtf|zip|rar|htm)$ index.php [L]
+

@@ -16,32 +16,32 @@
                 <div class="header-left">
                     <div class="logo">
                         <a href="/">
-                            <img src="/images/logo.png" alt="{$siteName}" />
+                            <img src="/images/logo.png" width="130" height="130" alt="{$siteName}" />
                         </a>
-                    </div>                    
+                    </div>
                 </div>
                 <div class="header-center">
                     <div class="site-title">
-                        <div class="text-logo">E-PRO SYSTEMS LTD</div>
-                        <div class="site-text">{t text="Innovative water treatment system"}</div>
+                        <div class="text-logo">{$textLogo}</div>
+                        <div class="site-text">{$siteText}</div>
                         <div class="banner" id="mainBanner"><!-- ---></div>
-                    </div>                    
+                    </div>
                 </div>
                 <div class="header-right">
                     <div class="navigation-bar">
                         <a href="?lang=en"><img src="/images/flags/gb.png"/></a>
                         <a href="?lang=ru"><img src="/images/flags/ru.png"/></a>
                         <a href="?lang=ua"><img src="/images/flags/ua.png"/></a>
-                    </div>                    
+                    </div>
                 </div>
                 <div class="head-line">
                     <div class="block">
                         <div id="for_healh" class="quality-block white-text">
-                            <div>{t text="Quality for Health"}</div>
+                            <div>{$leftOrange}</div>
                         </div>
                     </div>
                     <div class="block">
-                        <div id="for_office" class="banner-text white-text"><div>{t text="Business and office"}</div></div>
+                        <div id="for_office" class="banner-text white-text"><div>{$leftBlue}</div></div>
                     </div>
                     <div class="block last">
                         <div class="info-block">
@@ -61,13 +61,13 @@
                     {include file=`$template`}
                 </div>
                 <div class="right-col">
-                    <div class="right-banner">                        
+                    <div class="right-banner">
                         <img alt="" src="/images/banner-top.png" />
                         <div class="banner-content">
                             <img alt="" src="/images/presentation-ico.png" />
-                            <p id="order_first">{t text="Order a water test"}</p>
+                            <p id="order_first">{t text="Order a consultation"}</p>
                             <p id="order_second">{t text="Phone"} {$orderPhone}</p>
-                        </div>                        
+                        </div>
                         <div class="banner-content">
                             <img alt="" src="/images/partners-ico.png" />
                             <p><a href="/content/Regional.html">{t text="Regional representatives"}</a></p>

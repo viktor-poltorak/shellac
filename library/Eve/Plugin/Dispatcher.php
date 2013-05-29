@@ -7,8 +7,8 @@ class Eve_Plugin_Dispatcher extends Zend_Controller_Plugin_Abstract {
         //Init languages
         //if lang get in request it set to current languages
         $params['code'] = $this->getRequest()->getParam('lang', false);
-       
-        $language = new Eve_Languages($params); 
+
+        $language = new Eve_Languages($params);
         Zend_Registry::set('Lang', $language); //It will be set before init Db classes
         $templater->assign('currentLang', $language->getCurrentCode());
 
@@ -22,7 +22,7 @@ class Eve_Plugin_Dispatcher extends Zend_Controller_Plugin_Abstract {
             )
         );
         Zend_Registry::set('translate', $translate);
-        	
+
 
 		/** Assign phones **/
 		$settings = new Settings();
@@ -31,6 +31,10 @@ class Eve_Plugin_Dispatcher extends Zend_Controller_Plugin_Abstract {
 		$templater->assign('keywords', $settings->getByName('keywords'));
 		$templater->assign('pageTitle', $settings->getByName('title'));
 		$templater->assign('description', $settings->getByName('description'));
+		$templater->assign('textLogo', $settings->getByName('textLogo'));
+		$templater->assign('siteText', $settings->getByName('siteText'));
+		$templater->assign('leftOrange', $settings->getByName('leftOrange'));
+		$templater->assign('leftBlue', $settings->getByName('leftBlue'));
 
         //Categories
         $categoriesModel = new Categories($config);
