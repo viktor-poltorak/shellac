@@ -4,7 +4,7 @@
         <adapter>Pdo_Mysql</adapter>
 		<params>
 			<host>localhost</host>
-			<username>shellac2_main</username>
+			<username>shellac2</username>
 			<password>Yoo8eore</password>
 			<dbname>shellac2_main</dbname>
 		</params>
