@@ -4,9 +4,9 @@
         <adapter>Pdo_Mysql</adapter>
 		<params>
 			<host>localhost</host>
-			<username></username>
-			<password></password>
-			<dbname></dbname>
+			<username>shellac2_main</username>
+			<password>Yoo8eore</password>
+			<dbname>shellac2_main</dbname>
 		</params>
     </database>
    <database_viktor>
