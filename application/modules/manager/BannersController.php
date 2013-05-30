@@ -18,7 +18,7 @@ class Manager_BannersController extends Eve_Controller_AdminAction
     public function indexAction()
     {
         $banners = $this->_banners->getAll($this->_lang->getCurrentCode());
-           
+
         $this->_assign('banners', $banners);
 
         $this->_assign('tab', 'index');
@@ -39,7 +39,7 @@ class Manager_BannersController extends Eve_Controller_AdminAction
         if ($_FILES['image'] && $_FILES['image']['name'] != 'name') {
             $uploader = new Zend_File_Transfer_Adapter_Http();
             $uploader->setDestination($this->_dir_images);
-            $uploader->addValidator('IsImage', true);
+            //$uploader->addValidator('IsImage', false);
             $fileName = $uploader->getFileName(null, false);
             $newImageName = md5($fileName);
             $type = explode('.', $fileName);
@@ -64,6 +64,8 @@ class Manager_BannersController extends Eve_Controller_AdminAction
                 }
 
                 $bind['image'] = $fileName;
+            } else {
+                $errors = $uploader->getErrors();
             }
         }
 
@@ -116,7 +118,7 @@ class Manager_BannersController extends Eve_Controller_AdminAction
             $this->_redirect('/manager/banners/');
         $item = $this->_banners->load($id);
 
-        $curLang = $this->_lang->getCurrentCode();       
+        $curLang = $this->_lang->getCurrentCode();
 
         $infos = $this->_banners->getAllInfo($id);
 
