@@ -27,7 +27,7 @@
                 {*<a href="/manager/pages/delete/id/{$page->page_id}">
                     <img src="/images/admin/delete.png" alt="Удалить" />
                 </a>*}
-			</div>            
+			</div>
 		</div>
 	{foreachelse}
 	<div class="manager-list{cycle values=', gray-bg'}">
@@ -39,7 +39,7 @@
 			<div class="manager-list-content star-down">
 				Пока никаких страниц нет.
 			</div>
-	
+
 	</div>
 	{/foreach}
 

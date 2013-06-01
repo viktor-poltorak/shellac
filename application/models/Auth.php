@@ -1,7 +1,7 @@
 <?php
 	class Auth extends Zend_Db_Table_Abstract {
 		protected $_name = Eve_Enum_Tables::USERS;
-		
+
 		public static $storage = 'auth';
 
 		public static $params;
@@ -25,27 +25,27 @@
 				 ->setCredentialTreatment('MD5(?)');
 
 			Zend_Auth::getInstance()->setStorage(new Zend_Auth_Storage_Session(self::$storage));
-			
+
 			$result = Zend_Auth::getInstance()->authenticate($auth);
 
    			if($result->isValid()) {
 				Zend_Auth::getInstance()->getStorage($this->storage)->write($auth->getResultRowObject(null, 'password'));
-				
+
 				return true;
 			} else {
 				return false;
 			}
 		}
-		
+
 		public static function logout() {
 			Zend_Auth::getInstance()->clearIdentity();
 			Zend_Session::stop();
 		}
-		
+
 		public static function isLogged()	{
 			$auth = Zend_Auth::getInstance();
 			$auth -> setStorage(new Zend_Auth_Storage_Session(self::$storage));
-			if($auth -> getIdentity())  
+			if($auth -> getIdentity())
 				return true;
 			else
 				return false;
@@ -68,5 +68,5 @@
 		public function makePassword($email) {
 			return substr(md5(date('c').$user->email), 4, 8);
 		}
-		
+
 	}

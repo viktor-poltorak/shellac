@@ -36,7 +36,7 @@ class Manager_BannersController extends Eve_Controller_AdminAction
     {
         $langs = $this->_lang->getAll();
 
-        if ($_FILES['image'] && $_FILES['image']['name'] != 'name') {
+        if (!empty($_FILES['image']['name']) && $_FILES['image']['name'] != 'name') {
             $uploader = new Zend_File_Transfer_Adapter_Http();
             $uploader->setDestination($this->_dir_images);
             //$uploader->addValidator('IsImage', false);
@@ -107,7 +107,7 @@ class Manager_BannersController extends Eve_Controller_AdminAction
 
                 $this->_banners->insertInfo($bind);
             }
-            $this->_redirect('/manager/banners');
+            $this->_redirect('/manager/banners/edit/id/ '.(int) $this->_request->id .'/');
         }
     }
 
