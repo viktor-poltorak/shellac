@@ -3,4 +3,5 @@
 /tmp/templates_c/*
 /tmp/session/*
 /tmp/cache/*
+/configs/database.xml
 _server
