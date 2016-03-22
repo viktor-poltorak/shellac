@@ -25,7 +25,7 @@ try {
     $boot->dispatch();
 } catch (Exception $e) {
     if (DEBUG) {
-        if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
+        if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
             echo json_encode(array(
                 'error' => true,
                 'message' => join('br />', (array) $e->getMessage())
@@ -37,7 +37,7 @@ try {
             $templater->display('layout/index.tpl');
         }
     } else {
-        if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
+        if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&  $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
             echo json_encode(array(
                 'error' => true,
                 'message' => 'Invalid action.'

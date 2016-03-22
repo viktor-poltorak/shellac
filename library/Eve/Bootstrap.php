@@ -1,4 +1,4 @@
-<?
+<?php
 
 /**
  * 	Bootstrapper script
@@ -16,10 +16,12 @@ class Bootstrap
      * @var Zend_Controller_Front
      */
     protected $_controller;
+
     /**
      * @var Zend_Controller_Router_Rewrite
      */
     protected $_router;
+
     /**
      * @var SimpleXMLObject
      */
@@ -36,19 +38,18 @@ class Bootstrap
 
     public function init()
     {
-        set_magic_quotes_runtime((int) $this->_project_config->global->magic_quotes_runtime);
-
         // detect, is we are currently in debug mode
         if (file_exists('debug')) {
             define('DEBUG', true);
-            error_reporting(E_ALL ^ E_NOTICE); // all errors exept notices
+            error_reporting(E_ALL ^ E_STRICT ^ E_DEPRECATED); // all errors exept notices
         } else {
             error_reporting(0);    // no any errors
             define('DEBUG', false);
         }
 
-        if ((int) $this->_project_config->templater->disable_internal_renderer)
+        if ((int) $this->_project_config->templater->disable_internal_renderer) {
             $this->disableInternalRenderer();
+        }
 
         $this->setLocale((string) $this->_project_config->global->locale);
     }
@@ -97,22 +98,23 @@ class Bootstrap
     public function startSession()
     {
         Zend_Session::setOptions(array(
-                    'save_path' => 'tmp/session',
-                    'remember_me_seconds' => 864000      // Remember me 10 days
-                ));
+            'save_path' => 'tmp/session',
+            'remember_me_seconds' => 864000      // Remember me 10 days
+        ));
         Zend_Session::start();
     }
 
     public function getDb()
     {
-        if (file_exists('_server'))
+        if (file_exists('_server')) {
             $postfix = trim(file_get_contents('_server'));
+        }
 
         $config = $this->getConfig('database.xml', 'database' . $postfix);
 
         $adapter = Zend_Db::factory($config);
         $adapter->setFetchMode(Zend_Db::FETCH_OBJ);
-        $adapter->query("SET NAMES latin1");
+        $adapter->query("SET NAMES utf8");
 
         Zend_Db_Table_Abstract::setDefaultAdapter($adapter);
 
@@ -168,16 +170,14 @@ class Bootstrap
         }
     }
 
-    public function addRoute($name, $route, $module, $controller, $action,
-            $varNames = array())
+    public function addRoute($name, $route, $module, $controller, $action, $varNames = array())
     {
         $this->_router->addRoute($name, new Zend_Controller_Router_Route_Regex(
-                        $route,
-                        array(
-                            'module' => $module,
-                            'controller' => $controller,
-                            'action' => $action
-                        ), $varNames
+                $route, array(
+            'module' => $module,
+            'controller' => $controller,
+            'action' => $action
+                ), $varNames
         ));
     }
 

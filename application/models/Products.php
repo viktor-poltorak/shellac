@@ -9,6 +9,7 @@ class Products extends Eve_Model_Abstract
      * @var string
      */
     public $_name = 'products';
+
     /**
      * Info table
      *
@@ -25,8 +26,7 @@ class Products extends Eve_Model_Abstract
 
         $langCond = $this->getAdapter()->quoteInto(' AND info.lang=?', $lang);
 
-        $select->joinInner($this->_info . ' as info',
-                'info.' . $this->_id_field . '=' . 'p.' . $this->_id_field
+        $select->joinInner($this->_info . ' as info', 'info.' . $this->_id_field . '=' . 'p.' . $this->_id_field
                 . $langCond
         );
         return $select->query()->fetchObject();

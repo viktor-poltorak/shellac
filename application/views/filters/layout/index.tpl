@@ -86,18 +86,17 @@
                     <img class="logo-bottom" src="/images/footer-logo.png" alt="" />
                 </a>
                 <div class="counter" style="display: none">
-                    <!--LiveInternet counter-->
-                    <script type="text/javascript"><!--
-                        document.write("<a href='http://www.liveinternet.ru/click' "+
-                        "target=_blank><img src='//counter.yadro.ru/hit?t45.6;r"+
-                        escape(document.referrer)+((typeof(screen)=="undefined")?"":
-                        ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
-                        screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
-                        ";"+Math.random()+
-                        "' alt='' title='LiveInternet' "+
-                        "border='0' width='31' height='31'><\/a>")
-                        //-->
-                    </script><!--/LiveInternet-->
+                    <!--LiveInternet counter--><script type="text/javascript"><!--
+document.write("<a href='http://www.liveinternet.ru/click' "+
+"target=_blank><img src='//counter.yadro.ru/hit?t29.6;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random()+
+"' alt='' title='LiveInternet: показано количество просмотров и"+
+" посетителей' "+
+"border='0' width='88' height='120'><\/a>")
+//--></script><!--/LiveInternet-->
                 </div>
             </div>
         </div>
