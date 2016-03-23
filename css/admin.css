@@ -1048,3 +1048,13 @@ ul {
     margin: 5px;
     padding: 5px;
 }
+
+
+.ui-sortable-helper {
+    background-color: #CCCCCC;
+}
+
+.ui-state-highlight {
+    background-color: #B5D4FE;
+    height: 37px;
+}

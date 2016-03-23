@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <configuration>
     <options>
-		<frontend>
-			<lifetime>86400</lifetime>
-			<automatic_serialization>1</automatic_serialization>
-		</frontend>
-		<backend>
-			<cache_dir>tmp/cache</cache_dir>
-		</backend>
+        <frontend>
+            <lifetime>86400</lifetime>
+            <automatic_serialization>1</automatic_serialization>
+        </frontend>
+        <backend>
+            <cache_dir>tmp/cache</cache_dir>
+        </backend>
     </options>
 </configuration>

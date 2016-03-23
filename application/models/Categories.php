@@ -13,7 +13,7 @@ class Categories extends Eve_Model_Abstract
 
     public function getAll()
     {
-        return $this->select()->query()->fetchAll();
+        return $this->select()->order('order')->query()->fetchAll();
     }
 
     public function getByParentId($pid)
@@ -41,5 +41,24 @@ class Categories extends Eve_Model_Abstract
             return false;
         }
     }
-    
+
+    public function getMaxOrder()
+    {
+        $select = $this->getAdapter()->select();
+        $select->from($this->_name . ' as p', 'MAX(p.order) as order');
+        $order = $select->query()->fetchColumn(0);
+        return (int) $order;
+    }
+
+    public function updateOrder()
+    {
+        $categories = $this->select()->query()->fetchAll(Zend_Db::FETCH_ASSOC);
+
+        foreach ($categories as $index => $category) {
+            $category['order'] = $index;
+            $this->update($category, $category[$this->_id_field]);
+        }
+        return true;
+    }
+
 }

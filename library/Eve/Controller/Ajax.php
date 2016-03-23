@@ -1,6 +1,7 @@
 <?php
+
 /**
- *	Controller for ajax requests
+ * 	Controller for ajax requests
  *
  * @author Alex Oleshkevich <alex.oleshkevich@gmail.com>
  * @version 0.2
@@ -8,55 +9,63 @@
  * @package Eve
  * @license  GPLv3
  */
-class Eve_Controller_Ajax extends Eve_Controller_Action  {
-	public function init() {
-		parent::init();
+class Eve_Controller_Ajax extends Eve_Controller_Action
+{
 
-		if (!$this->isAjax())
-			$this->_redirect('/404/');
-	}
+    public function init()
+    {
+        parent::init();
 
-	/**
-	 *	displays a plain html
-	 * @param string $template
-	 */
-	protected function _display($template) {
-		echo $this->_fetch($template);
-	}
+        if (!$this->isAjax()) {
+            $this->_redirect('/404/');
+        }
+    }
 
-	/**
-	 *	returns a json string
-	 * @param string $template
-	 * @param int $status
-	 * @param string $message
-	 */
-	protected function _show($template, $status = 200, $message = 'Done') {
-		$template = $this->_fetch($template);
+    /**
+     * 	displays a plain html
+     * @param string $template
+     */
+    protected function _display($template)
+    {
+        echo $this->_fetch($template);
+    }
 
-		echo json_encode(array(
-			'data' => $template,
-			'status' => $status,
-			'message' => $message
-		));
-	}
+    /**
+     * 	returns a json string
+     * @param string $template
+     * @param int $status
+     * @param string $message
+     */
+    protected function _show($template, $status = 200, $message = 'Done')
+    {
+        $template = $this->_fetch($template);
 
-	/**
-	 *	 simply display json-encoded string
-	 * @param array $bind
-	 */
-	protected function _respond($bind) {
-		echo json_encode($bind);
-	}
+        echo json_encode(array(
+            'data' => $template,
+            'status' => $status,
+            'message' => $message
+        ));
+    }
 
-	/**
-	 *	display error
-	 * @param string $text
-	 */
-	protected function _respondError($text) {
-		echo json_encode(array(
-			'error' => true,
-			'message' => $text
-		));
-	}
+    /**
+     * 	 simply display json-encoded string
+     * @param array $bind
+     */
+    protected function _respond($bind)
+    {
+        echo json_encode($bind);
+    }
+
+    /**
+     * 	display error
+     * @param string $text
+     */
+    protected function _respondError($text)
+    {
+        echo json_encode(array(
+            'error' => true,
+            'message' => $text
+        ));
+    }
 
 }

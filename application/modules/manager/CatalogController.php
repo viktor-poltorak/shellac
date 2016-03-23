@@ -25,6 +25,12 @@ class Manager_CatalogController extends Eve_Controller_AdminAction
 
     public function indexAction()
     {
+        $maxOrder = $this->_categories->getMaxOrder();
+        if (empty($maxOrder)) {
+            $this->_categories->updateOrder();
+        }
+
+
         $categories = $this->_categories->getAll();
         $curLang = $this->_lang->getCurrentCode();
         foreach ($categories as &$cat) {
@@ -49,19 +55,31 @@ class Manager_CatalogController extends Eve_Controller_AdminAction
 
     public function createItemAction()
     {
-        if ($this->_request->name == '') {
+        $params = $this->_request->getPost();
+
+        if (isset($params['name_ru'])) {
+            if (empty($params['name'])) {
+                $params['name'] = $params['name_ru'];
+            }
+            if (empty($params['name_ua'])) {
+                $params['name_ua'] = $params['name'];
+            }
+        }
+
+        if (empty($params['name'])) {
             $errors[] = $this->errors->name_must_be_set;
             $this->_request->setParam('errors', $errors);
             $this->_request->setParam('request', $this->_request);
             $this->_forward('add');
         } else {
             $bind = array(
-                'name' => $this->_request->name,
-                'name_ru' => $this->_request->name_ru,
-                'name_ua' => $this->_request->name_ua
+                'name' => $params['name'],
+                'name_ru' => $params['name_ru'],
+                'name_ua' => $params['name_ua'],
+                'order' => $this->_categories->getMaxOrder() + 1,
             );
             $this->_categories->insert($bind);
-            $this->_redirect('/manager/categories');
+            $this->_redirect('/manager/catalog');
         }
     }
 
@@ -69,7 +87,7 @@ class Manager_CatalogController extends Eve_Controller_AdminAction
     {
         $id = (int) $this->_request->id;
         if ((!$id)) {
-            $this->_redirect('/manager/categories/');
+            $this->_redirect('/manager/catalog/');
         }
         $item = $this->_categories->load($id);
         $this->_assign('request', $item);
@@ -85,7 +103,7 @@ class Manager_CatalogController extends Eve_Controller_AdminAction
                 'name_ua' => $this->_request->name_ua);
             $this->_categories->update($bind, $id);
         }
-        $this->_redirect('/manager/categories');
+        $this->_redirect('/manager/catalog');
     }
 
     public function deleteAction()
@@ -94,7 +112,27 @@ class Manager_CatalogController extends Eve_Controller_AdminAction
         if ($id) {
             $this->_categories->delete($id);
         }
-        $this->_redirect('/manager/categories');
+        $this->_redirect('/manager/catalog');
+    }
+
+    public function updateOrderAction()
+    {
+        $orders = $this->_request->orders;
+
+        if (empty($orders)) {
+            echo json_encode(array(
+                'status' => false,
+            ));
+            return;
+        }
+
+        foreach ($orders as $index => $id) {
+            $this->_categories->update(array('order' => $index), $id);
+        }
+
+        echo json_encode(array(
+            'status' => true,
+        ));
     }
 
 }
