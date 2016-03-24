@@ -30,6 +30,22 @@ class Manager_ProductsController extends Eve_Controller_AdminAction
         ));
     }
 
+    public function listAction()
+    {
+        $categoryId = $this->_request->id;
+        $category = $this->_categories->load($categoryId);
+        $this->_assign('category', $category);
+
+        $maxOrder = $this->_products->getMaxOrder($categoryId);
+        if (empty($maxOrder)) {
+            $this->_products->updateOrder($categoryId);
+        }
+
+        $this->_assign('products', $this->_products->getAll($this->_lang->getCurrentCode(), 'all', $categoryId));
+        $this->_assign('tab', 'index');
+        $this->_display('products/index.tpl');
+    }
+
     public function indexAction()
     {
         $this->_assign('products', $this->_products->getAll($this->_lang->getCurrentCode()));
@@ -48,17 +64,18 @@ class Manager_ProductsController extends Eve_Controller_AdminAction
     public function saveAction()
     {
         $langs = $this->_lang->getAll();
-        $category_id = (int) $this->_request->category_id;
-
-        if ($category_id == 0) {
+        $categoryId = (int) $this->_request->category_id;
+        $errors = array();
+        if ($categoryId == 0) {
             $errors = $this->errors->products->no_category;
         }
 
         $bind = array(
-            'category_id' => $category_id
+            'category_id' => $categoryId
         );
 
-        if ($_FILES['image']) {
+
+        if (!empty($_FILES['image']) && !empty($_FILES['image']['tmp_name'])) {
             $uploader = new Zend_File_Transfer_Adapter_Http();
             $uploader->setDestination($this->_dir_images);
             $uploader->addValidator('IsImage', true);
@@ -99,18 +116,18 @@ class Manager_ProductsController extends Eve_Controller_AdminAction
                 }
                 $this->_products->update($bind, $id);
             } else {
+                $bind['order'] = $this->_products->getMaxOrder($categoryId) + 1;
                 $id = $this->_products->insert($bind);
             }
 
             $this->_products->deleteInfo($id);
 
             foreach ($langs as $lang) {
-
                 $title = (isset($this->_request->title[$lang->id])) ? $this->_request->title[$lang->id] : '';
                 $title = trim(strip_tags($title));
 
                 $description = (isset($this->_request->description[$lang->id])) ? $this->_request->description[$lang->id] : '';
-                $description = trim(strip_tags($description));
+                $description = trim($description);
                 $description = stripslashes($description);
                 $description = preg_replace('/width=\"\d+\"/i', "", $description);
                 $description = preg_replace('/height=\"\d+\"/i', "", $description);
@@ -132,8 +149,7 @@ class Manager_ProductsController extends Eve_Controller_AdminAction
 
                 $this->_products->insertInfo($bind);
             }
-
-            $this->_redirect('/manager/products');
+            $this->_redirect('/manager/products/edit/id/' . $this->_request->id);
         }
     }
 
@@ -168,6 +184,7 @@ class Manager_ProductsController extends Eve_Controller_AdminAction
             $item->keywords[$info->lang] = $info->keywords;
         }
 
+
         $this->_assign('categories', $categories);
         $this->_assign('request', $item);
         $this->_display('products/edit.tpl');
@@ -198,6 +215,26 @@ class Manager_ProductsController extends Eve_Controller_AdminAction
         if (file_exists($image2)) {
             unlink($image2);
         }
+    }
+
+    public function updateOrderAction()
+    {
+        $orders = $this->_request->orders;
+
+        if (empty($orders)) {
+            echo json_encode(array(
+                'status' => false,
+            ));
+            return;
+        }
+
+        foreach ($orders as $index => $id) {
+            $this->_products->update(array('order' => $index), $id);
+        }
+
+        echo json_encode(array(
+            'status' => true,
+        ));
     }
 
 }

@@ -65,15 +65,39 @@ class Products extends Eve_Model_Abstract
         if ($limit != 'all') {
             $select->limit($limit);
         }
+        $select->order('order');
         return $select->query()->fetchAll();
     }
 
-    public function getByCatId($cat, $limit = 15)
+    public function getByCatId($catId, $limit = 15)
     {
         $select = $this->select();
-        $select->where('category_id=?', $cat);
+        $select->where('category_id=?', $catId);
         $select->limit($limit);
+        $select->order('order');
         return $select->query()->fetchAll();
+    }
+
+    public function getMaxOrder($catId)
+    {
+        $select = $this->getAdapter()->select();
+        $select->from($this->_name . ' as p', 'MAX(p.order) as order');
+        $select->where('p.category_id = ?', $catId);
+        $order = $select->query()->fetchColumn(0);
+        return (int) $order;
+    }
+
+    public function updateOrder($calId)
+    {
+        $select = $this->select();
+        $select->where('category_id=?', $calId);
+        $products = $select->query()->fetchAll(Zend_Db::FETCH_ASSOC);
+
+        foreach ($products as $index => $category) {
+            $category['order'] = $index;
+            $this->update($category, $category[$this->_id_field]);
+        }
+        return true;
     }
 
 }

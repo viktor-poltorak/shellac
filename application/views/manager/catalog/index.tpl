@@ -11,13 +11,13 @@
                     <img src="/images/admin/star.png" alt="" />
                 </div>
                 <div class="manager-list-content">
-                    <a href="/manager/categories/edit/id/{$item->category_id}/">{$item->name}</a>&nbsp;&nbsp;&nbsp;
+                    <a href="/manager/catalog/edit/id/{$item->category_id}/">{$item->name}</a>&nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="manager-list-controls">
-                    <a href="/manager/categories/edit/id/{$item->category_id}">
-                        <img src="/images/admin/edit.png" alt="Редактировать" />
+                    <a href="/manager/products/list/id/{$item->category_id}">
+                        <img src="/images/admin/edit.png" alt="Продукты" />
                     </a>
-                    <a href="/manager/categories/delete/id/{$item->category_id}">
+                    <a href="/manager/catalog/delete/id/{$item->category_id}">
                         <img src="/images/admin/delete.png" alt="Удалить" />
                     </a>
                 </div>
@@ -38,5 +38,4 @@
 
 <script>
     var catalog = new Catalog('.manager-content');
-    console.log(catalog);
 </script>

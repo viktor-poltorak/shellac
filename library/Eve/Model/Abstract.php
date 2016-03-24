@@ -7,18 +7,21 @@ abstract class Eve_Model_Abstract extends Zend_Db_Table_Abstract
      * @var string
      */
     protected $_name;
+
     /**
      * users table
      *
      * @var string
      */
     protected $_table_users = Eve_Enum_Tables::USERS;
+
     /**
      * primary key
      *
      * @var string
      */
     protected $_primary;
+
     /**
      *
      * @var string
@@ -85,8 +88,9 @@ abstract class Eve_Model_Abstract extends Zend_Db_Table_Abstract
         $select = $this->getAdapter()->select();
         $select->from($this->_name);
 
-        if ($limit)
+        if ($limit) {
             $select->limitPage($page, $limit);
+        }
 
         if ($order) {
             $select->order($order);
@@ -95,7 +99,7 @@ abstract class Eve_Model_Abstract extends Zend_Db_Table_Abstract
         if ($where)
             $select->where($where);
 
-        if($langFilter){
+        if ($langFilter) {
             $select->where('lang=?', $this->_lang);
         }
 
@@ -163,12 +167,12 @@ abstract class Eve_Model_Abstract extends Zend_Db_Table_Abstract
 
     /**
      * 	update views count
-     * @param int $id 
+     * @param int $id
      */
     public function updateView($id)
     {
         return $this->getAdapter()->query(
-                'UPDATE `' . $this->_name . '`
+                        'UPDATE `' . $this->_name . '`
 				SET `views` = `views`+1
 				WHERE `' . $this->_id_field . '` = ' . $id
         );

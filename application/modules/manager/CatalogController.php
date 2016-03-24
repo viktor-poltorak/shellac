@@ -5,7 +5,7 @@ class Manager_CatalogController extends Eve_Controller_AdminAction
 
     /**
      *
-     * @var array
+     * @var Categories
      */
     protected $_categories;
 
@@ -21,6 +21,7 @@ class Manager_CatalogController extends Eve_Controller_AdminAction
     {
         parent::init();
         $this->_categories = new Categories();
+        $this->_products = new Products();
     }
 
     public function indexAction()
@@ -134,5 +135,4 @@ class Manager_CatalogController extends Eve_Controller_AdminAction
             'status' => true,
         ));
     }
-
 }

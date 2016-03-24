@@ -19,29 +19,29 @@
         {/if}
         <div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
             <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
-                <li class="ui-state-default ui-corner-top">
-                    <a href="#tabs-1">English</a>
-                </li>
                 <li class="ui-state-default ui-corner-top ui-tabs-selected ui-state-active">
-                    <a href="#tabs-2">Russian</a>
+                    <a href="#tabs-1">Russian</a>
+                </li>
+                <li class="ui-state-default ui-corner-top">
+                    <a href="#tabs-2">English</a>
                 </li>
                 <li class="ui-state-default ui-corner-top">
                     <a href="#tabs-3">Ukrain</a>
                 </li>
             </ul>
-            <div id="tabs-1" class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
-                <div class="form-item">
-                    <label>Название:</label>
-                    <input type="text" id="title" name="name" value="{$request->name}" />
-                </div>
-            </div>
-            <div id="tabs-2" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+            <div id="tabs-1" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <div class="form-item">
                     <label>Название:</label>
                     <input type="text" id="title" name="name_ru" value="{$request->name_ru}" />
                 </div>
             </div>
-            <div id="tabs-3" class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
+            <div id="tabs-2" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+                <div class="form-item">
+                    <label>Название:</label>
+                    <input type="text" id="title" name="name" value="{$request->name}" />
+                </div>
+            </div>
+            <div id="tabs-3" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <div class="form-item">
                     <label>Название:</label>
                     <input type="text" id="title" name="name_ua" value="{$request->name_ua}" />
