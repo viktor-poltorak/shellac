@@ -27,6 +27,29 @@ class IndexController extends Eve_Controller_Action
         $this->_display('pages/view.tpl');
     }
 
+    public function productAction()
+    {
+        $id = (int) $this->_getParam('id');
+
+        if ($id == 0) {
+            $this->_redirect('/404');
+        }
+        $model = new Products();
+        $product = $model->load($id, $this->_lang->getCurrentCode());
+
+        if (!$product) {
+            $this->_redirect('/404');
+        }
+        $settings = new Settings();
+
+        $this->_setPageTitle($settings->getByName('title') . ' : ' . $product->title);
+        $this->_assign('keywords', $product->keywords);
+        $this->_assign('description', $product->description);
+        $this->_assign('curCat', $product->category_id);
+        $this->_assign('product', $product);
+        $this->_display('products/show.tpl');
+    }
+
     public function categoryAction()
     {
         $id = (int) $this->_getParam('id');

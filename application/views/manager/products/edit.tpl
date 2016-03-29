@@ -37,8 +37,16 @@
                     <input type="text" id="title" name="title[ru]" value="{$request->title.ru}" />
                 </div>
                 <div class="form-item">
+                    <label>Цена:</label>
+                    <input type="text" id="title" name="price" value="{$request->price}" />
+                </div>
+                <div class="form-item">
+                    <label>Кратное описание:</label>
+                    <textarea type="text" name="description[ru]">{$request->description.ru}</textarea>
+                </div>
+                <div class="form-item">
                     <label>Описание:</label>
-                    <textarea type="text" id="product_description_ru" name="description[ru]">{$request->description.ru}</textarea>
+                    <textarea type="text" id="product_description_ru" name="full_description[ru]">{$request->full_description.ru}</textarea>
                 </div>
                 <div class="form-item">
                     <label>Meta тег:</label>
@@ -55,8 +63,16 @@
                     <input type="text" id="title" name="title[en]" value="{$request->title.en}" />
                 </div>
                 <div class="form-item">
+                    <label>Цена:</label>
+                    <input type="text" id="title" name="price" value="{$request->price}" />
+                </div>
+                <div class="form-item">
+                    <label>Кратное описание:</label>
+                    <textarea type="text" name="description[en]">{$request->description.en}</textarea>
+                </div>
+                <div class="form-item">
                     <label>Описание:</label>
-                    <textarea type="text" id="product_description_en" name="description[en]">{$request->description.en}</textarea>
+                    <textarea type="text" id="product_description_en" name="full_description[en]">{$request->full_description.en}</textarea>
                 </div>
                 <div class="form-item">
                     <label>Meta тег:</label>
@@ -73,8 +89,16 @@
                     <input type="text" id="title" name="title[ua]" value="{$request->title.ua}" />
                 </div>
                 <div class="form-item">
+                    <label>Цена:</label>
+                    <input type="text" id="title" name="price" value="{$request->price}" />
+                </div>
+                <div class="form-item">
+                    <label>Кратное описание:</label>
+                    <textarea type="text" name="description[ua]">{$request->description.ua}</textarea>
+                </div>
+                <div class="form-item">
                     <label>Описание:</label>
-                    <textarea type="text" id="product_description_ua" name="description[ua]">{$request->description.ua}</textarea>
+                    <textarea type="text" id="product_description_ua" name="full_description[ua]">{$request->full_description.ua}</textarea>
                 </div>
                 <div class="form-item">
                     <label>Meta тег:</label>
@@ -91,17 +115,25 @@
                 <label>Категория:</label>
                 <select name="category_id">
                     {foreach from=$categories item=cat}
-                        <option value="{$cat->category_id}" {if $request->category_id == $cat->category_id}selected{/if} >{$cat->name}</option>
+                        <option value="{$cat->category_id}" {if $request->category_id == $cat->category_id}selected{/if} >{$cat->name_ru}</option>
                     {/foreach}
                 </select>
             </div>
             <div class="form-item">
-                <label>Изображение:</label>
+                <label>Изображения:</label>
                 <input type="file" name="image"  />
+                <input type="file" name="image_1"  />
+                <input type="file" name="image_2"  />
             </div>
             {if $request->image != ''}
                 <div class="form-item">
-                    <img src="/images/products/{$request->image}" />
+                    <img width="150" src="/images/products/{$request->image}" />
+                    {if $request->image_1 != ''}
+                        <img width="150" src="/images/products/{$request->image_1}" />
+                    {/if}
+                    {if $request->image_2 != ''}
+                        <img width="150" src="/images/products/{$request->image_2}" />
+                    {/if}
                 </div>
             {/if}
 

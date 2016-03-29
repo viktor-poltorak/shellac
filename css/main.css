@@ -12,6 +12,12 @@ h1, h2{
     text-transform: uppercase;
 }
 
+.content a {
+    font-weight: normal;
+    color: #184888;
+    text-decoration: none;
+}
+
 * {
     outline: 0 none;
 }
@@ -188,7 +194,7 @@ body{
 
 .text-logo{
     color: #184888;
-    font-size: 16px;
+    font-size: 21px;
     font-weight: bold;
 }
 
@@ -377,4 +383,9 @@ body{
 .right-banner a{
     color: #FFFFFF;
     text-decoration: underline;
+}
+
+.product .addition-image img{
+    max-width: 518px;
+
 }

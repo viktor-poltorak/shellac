@@ -2,7 +2,7 @@
 <div class="manager-content" data-category-id="{$category->category_id}">
     <div class="manager-header">
         <img src="/images/admin/icons/settings.png" alt="" />
-        <span>Товары</span>
+        <span>Категория - {$category->name_ru}</span>
         <div class="manager-add">
             <a href="/manager/catalog">
                 <img src="/images/admin/back.png" alt="" />

@@ -31,8 +31,9 @@ class Pages_IndexController extends Eve_Controller_Action
     {
         $link = $this->_request->link;
         $item = $this->_pages->getByLink($link . '.html', $this->_lang->getCurrentCode());
-        if (!$item)
+        if (!$item) {
             $this->_redirect('/404/');
+        }
 
         $this->_pages->updateView($item->page_id);
         $this->_setPageTitle($item->title);
