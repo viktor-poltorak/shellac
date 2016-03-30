@@ -41,7 +41,6 @@ class Product_IndexController extends Eve_Controller_Action
 
         $this->_products->updateView($id);
 
-
         $leftMenu = $this->_categories->getByParentId($product->category_id);
         if (!$leftMenu) {
             $leftMenu = $this->_categories->getByParentId(0);
@@ -53,35 +52,6 @@ class Product_IndexController extends Eve_Controller_Action
 
         $this->_assign('product', $product);
         $this->_display('products/view.tpl');
-    }
-
-    protected function _calcDiscount($products)
-    {
-        $settings = new Settings();
-        $currency = $settings->getByName('dollar');
-        $currency = str_replace(array('.', ','), '', $currency);
-        if ($products) {
-            if (is_array($products)) {
-                foreach ($products as &$v) {
-                    if ($v->discount > 0) {
-                        $v->price = str_replace('.', "", $v->price);
-                        $v->price -= ($v->price / 100) * $v->discount;
-                        $v->price = number_format($v->price, 0, ',', '.');
-                    }
-                    if ($currency)
-                        $v->dollar = round(str_replace(array('.', ','), '', $v->price) * $currency);
-                }
-            } else {
-                if ($products->discount > 0) {
-                    $products->price = str_replace('.', "", $products->price);
-                    $products->price -= ($products->price / 100) * $products->discount;
-                    $products->price = number_format($products->price, 0, ',', '.');
-                }
-                if ($currency)
-                    $products->dollar = round($products->price * $currency);
-            }
-        }
-        return $products;
     }
 
 }

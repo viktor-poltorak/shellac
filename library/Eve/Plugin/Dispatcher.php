@@ -38,6 +38,7 @@ class Eve_Plugin_Dispatcher extends Zend_Controller_Plugin_Abstract
         $templater->assign('siteText', $settings->getByName('siteText'));
         $templater->assign('leftOrange', $settings->getByName('leftOrange'));
         $templater->assign('leftBlue', $settings->getByName('leftBlue'));
+        $templater->assign('settings', $settings);
 
         //Categories
         $categoriesModel = new Categories();

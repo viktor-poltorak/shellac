@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 	Controller for ajax requests
+ * Controller for ajax requests
  *
  * @author Alex Oleshkevich <alex.oleshkevich@gmail.com>
  * @version 0.2

@@ -51,7 +51,7 @@ class Products extends Eve_Model_Abstract
         return $this->getAdapter()->insert($this->_info, $bind);
     }
 
-    public function getAll($lang = 'en', $limit = 'all', $catId = false)
+    public function getAll($lang = 'en', $limit = 'all', $catId = false, $onlyVisible = false)
     {
         $select = $this->getAdapter()->select();
         $select->from($this->_name . ' as p');
@@ -61,10 +61,15 @@ class Products extends Eve_Model_Abstract
         if ($catId) {
             $select->where('p.category_id = ?', $catId);
         }
+        if ($onlyVisible) {
+            $select->where('p.visible = 1');
+        }
 
         if ($limit != 'all') {
             $select->limit($limit);
         }
+
+
         $select->order('order');
         return $select->query()->fetchAll();
     }

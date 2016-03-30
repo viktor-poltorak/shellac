@@ -1,14 +1,13 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-            <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-            <title>{$pageTitle}</title>
-            <meta name="keywords" content="{$keywords}" />
-            <meta name="description" content="{$description}" />
-            <link rel="shortcut icon" href="/favicon.ico" />
-            <link rel="stylesheet" href="/css/main.css" type="text/css" />
-            <script src="/js/libs/jquery.js"></script>
-            <script src="/js/main.js"></script>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <title>{$pageTitle}</title>
+        <meta name="keywords" content="{$keywords}" />
+        <meta name="description" content="{$description}" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="stylesheet" href="/css/main.css" type="text/css" />
+        <script src="/js/libs/jquery.js"></script>
     </head>
     <body>
         <div class="body">
@@ -85,20 +84,15 @@
                 <a href="/">
                     <img class="logo-bottom" src="/images/footer-logo.png" alt="" />
                 </a>
-                <div class="counter" style="display: none">
-                    <!--LiveInternet counter--><script type="text/javascript"><!--
-document.write("<a href='http://www.liveinternet.ru/click' "+
-"target=_blank><img src='//counter.yadro.ru/hit?t29.6;r"+
-escape(document.referrer)+((typeof(screen)=="undefined")?"":
-";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
-screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
-";"+Math.random()+
-"' alt='' title='LiveInternet: показано количество просмотров и"+
-" посетителей' "+
-"border='0' width='88' height='120'><\/a>")
-//--></script><!--/LiveInternet-->
-                </div>
+                <div class="counter" style="display: none"></div>
             </div>
         </div>
+        <script>
+            var slides =  {literal} {{/literal}
+                bannerOne: '/images/uploads/{$settings->getByName('slideOne')}',
+                bannerTwo: '/images/uploads/{$settings->getByName('slideTwo')}'
+            {literal} }{/literal}
+        </script>
+        <script src="/js/main.js"></script>
     </body>
 </html>

@@ -14,7 +14,13 @@
         {foreach from=$products item=item}
             <div class="manager-list{cycle values=', gray-bg'}"  data-id="{$item->product_id}">
                 <div class="manager-list-image">
-                    <img src="/images/admin/star.png" alt="" />
+                    <a href="javascript:" class="toggle-product" data-id="{$item->product_id}">
+                        {if $item->visible}
+                            <img src="/images/admin/star.png" alt="" />
+                        {else}
+                            <img src="/images/admin/star-off.png" alt="" />
+                        {/if}
+                    </a>
                 </div>
                 <div class="manager-list-content">
                     <a href="/manager/products/edit/id/{$item->product_id}/">{$item->title}</a>&nbsp;&nbsp;&nbsp;

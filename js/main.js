@@ -14,21 +14,26 @@ var Class = function (methods) {
 };
 
 $(document).ready(function () {
-    $('#for_healh').bind('mouseenter', function () {
-        $('#mainBanner').css('background-image', 'url("../images/banner-one.png")');
-    });
-
-    $('#for_office').bind('mouseenter', function () {
-        $('#mainBanner').css('background-image', 'url("../images/banner-two.png")');
-    });
-
     $('#order_first').click(function () {
         $(this).hide();
         $('#order_second').show();
     })
-});
 
-image1 = new Image();
-image1.src = '/images/banner-one.png';
-image2 = new Image();
-image2.src = '/images/banner-two.png';
+    if (typeof slides == 'undefined') {
+        return;
+    }
+
+    $('#for_healh').bind('mouseenter', function () {
+        $('#mainBanner').css('background-image', 'url("' + slides.bannerOne + '")');
+    });
+
+    $('#for_office').bind('mouseenter', function () {
+        $('#mainBanner').css('background-image', 'url("' + slides.bannerTwo + '")');
+    });
+});
+if (typeof slides !== 'undefined') {
+    image1 = new Image();
+    image1.src = slides.bannerOne;
+    image2 = new Image();
+    image2.src = slides.bannerTwo;
+}

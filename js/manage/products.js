@@ -3,8 +3,12 @@ var Products = Class({
     section: null,
     init: function (section) {
         this.section = $(section);
-
         this.initSortCategories();
+
+        var that = this;
+        this.section.find('.toggle-product').on('click', function () {
+            that.toggleProduct($(this));
+        });
     },
     initSortCategories: function () {
         var that = this;
@@ -33,5 +37,17 @@ var Products = Class({
             orders.push($(items[i]).data('id'));
         }
         $.post('/manager/products/update-order', {orders: orders});
+    },
+    toggleProduct: function (item) {
+        var id = item.data('id');
+        $.post('/manager/products/toggle-product', {id: id}, function (response) {
+            var image = '/images/admin/star-off.png';
+            if (response.visible == 1) {
+                image = '/images/admin/star.png';
+            }
+            if (response.status) {
+                item.find('img').attr('src', image);
+            }
+        });
     }
 });

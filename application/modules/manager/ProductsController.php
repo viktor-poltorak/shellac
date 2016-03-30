@@ -173,7 +173,6 @@ class Manager_ProductsController extends Eve_Controller_AdminAction
                         $this->deleteImage($product->{$name});
                     }
                 }
-
                 return $fileName;
             }
         }
@@ -217,6 +216,36 @@ class Manager_ProductsController extends Eve_Controller_AdminAction
         $this->_assign('categories', $categories);
         $this->_assign('request', $item);
         $this->_display('products/edit.tpl');
+    }
+
+    public function toggleProductAction()
+    {
+        header('Content-Type: application/json');
+        $id = (int) $this->_request->id;
+        if ((!$id)) {
+            echo json_encode(array(
+                'status' => false,
+            ));
+            return;
+        }
+        $item = $this->_products->load($id);
+
+        if (!$item) {
+            echo json_encode(array(
+                'status' => false,
+            ));
+            return;
+        }
+        $bind = array(
+            'visible' => (empty($item->visible)) ? 1 : 0,
+        );
+        $this->_products->update($bind, $id);
+
+        echo json_encode(array(
+            'status' => true,
+            'visible' => $bind['visible'],
+        ));
+        return;
     }
 
     public function deleteAction()

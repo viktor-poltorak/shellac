@@ -40,6 +40,10 @@ class IndexController extends Eve_Controller_Action
         if (!$product) {
             $this->_redirect('/404');
         }
+        if (empty($product->visible)) {
+            $this->_redirect('/404');
+        }
+
         $settings = new Settings();
 
         $this->_setPageTitle($settings->getByName('title') . ' : ' . $product->title);
@@ -58,7 +62,7 @@ class IndexController extends Eve_Controller_Action
             $this->_redirect('/404');
         }
         $model = new Products();
-        $products = $model->getAll($this->_lang->getCurrentCode(), 'all', $id);
+        $products = $model->getAll($this->_lang->getCurrentCode(), 'all', $id, true);
         $this->_assign('products', $products);
         $this->_assign('curCat', $id);
         $this->_display('products/list.tpl');

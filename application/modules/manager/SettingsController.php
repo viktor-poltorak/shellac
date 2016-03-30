@@ -7,6 +7,7 @@ class Manager_SettingsController extends Eve_Controller_AdminAction
     protected $allowedRoles = array(
         'admins'
     );
+    protected $_dir_images = 'images/uploads/';
 
     public function init()
     {
@@ -55,6 +56,9 @@ class Manager_SettingsController extends Eve_Controller_AdminAction
         }
 
         $item = $this->_settings->load($id);
+        if ($item->type === 'file') {
+            $item->value = $this->_dir_images . $item->value;
+        }
         $this->_assign('request', $item);
         $this->_display('settings/edit.tpl');
     }
@@ -64,9 +68,23 @@ class Manager_SettingsController extends Eve_Controller_AdminAction
         $id = (int) $this->_request->id;
 
         if ($id) {
+            $item = $this->_settings->load($id);
+
+            if ($item->type === 'file') {
+                $value = $this->processImage('value');
+
+                if ($value && !empty($item->value)) {
+                    if (file_exists($this->_dir_images . $item->value)) {
+                        unlink(file_exists($this->_dir_images . $item->value));
+                    }
+                }
+            } else {
+                $value = $this->_request->value;
+            }
+
             $bind = array(
                 'name' => $this->_request->name,
-                'value' => $this->_request->value,
+                'value' => $value,
                 'lock' => $this->_request->lock
             );
             $this->_settings->update($bind, $id);
@@ -84,6 +102,31 @@ class Manager_SettingsController extends Eve_Controller_AdminAction
         }
 
         $this->_redirect('/manager/settings');
+    }
+
+    public function processImage($name)
+    {
+        if (!empty($_FILES[$name]) && !empty($_FILES[$name]['tmp_name'])) {
+            $uploader = new Zend_File_Transfer_Adapter_Http();
+            $uploader->setDestination($this->_dir_images);
+            // $uploader->addValidator('IsImage', true);
+            $fileName = $uploader->getFileName($name, false);
+            $newImageName = uniqid();
+            $type = explode('.', $fileName);
+            $type = strtolower(array_pop($type));
+
+            $uploader->addFilter('Rename', array(
+                'target' => $this->_dir_images . $newImageName . '.' . $type,
+                'overwrite' => true)
+            );
+
+            $image = $uploader->receive($name);
+
+            if ($image) {
+                return $uploader->getFileName($name, false);
+            }
+        }
+        return false;
     }
 
 }
