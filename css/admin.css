@@ -452,6 +452,20 @@ ul {
     margin: 0;
 }
 
+.manager-list-product-price {
+
+}
+
+.manager-list-save-price {
+    float: left;
+    margin-top: 5px;
+    margin-right: 35px;
+}
+
+.manager-list .disabled {
+    
+}
+
 .manager-list {
     clear: both;
     overflow: hidden;

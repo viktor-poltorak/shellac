@@ -1,6 +1,6 @@
 {foreach from=$products item=item}
     <div class="product-block">
-        <h1><a href="/product/{$item->product_id}">{$item->title|stripslashes}</a></h1>
+        <h1><a href="/product/{$item->product_id}" target="_blank">{$item->title|stripslashes}</a></h1>
         {if $item->image != ''}
             <div class="product-image">
                 <img src="/images/products/{$item->image}" alt="{$item->title|stripslashes}" />

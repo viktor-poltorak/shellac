@@ -20,7 +20,7 @@ class IndexController extends Eve_Controller_Action
 
         $this->_assign('page', $this->_pages->getByLink('Main_page.html', $this->_lang->getCurrentCode()));
 
-        /*         * BANNERS* */
+        /* BANNERS* */
         $bannersModel = new Banners();
         $this->_assign('banners', $bannersModel->getAll($this->_lang->getCurrentCode()));
 
@@ -48,7 +48,7 @@ class IndexController extends Eve_Controller_Action
 
         $this->_setPageTitle($settings->getByName('title') . ' : ' . $product->title);
         $this->_assign('keywords', $product->keywords);
-        $this->_assign('description', $product->description);
+        $this->_assign('meta', $product->meta);
         $this->_assign('curCat', $product->category_id);
         $this->_assign('product', $product);
         $this->_display('products/show.tpl');

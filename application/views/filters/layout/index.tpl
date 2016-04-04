@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <title>{$pageTitle}</title>
         <meta name="keywords" content="{$keywords}" />
-        <meta name="description" content="{$description}" />
+        <meta name="description" content="{$meta}" />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="stylesheet" href="/css/main.css" type="text/css" />
         <script src="/js/libs/jquery.js"></script>

@@ -73,7 +73,6 @@ class Manager_ProductsController extends Eve_Controller_AdminAction
         if ($categoryId == 0) {
             $errors = $this->errors->products->no_category;
         }
-
         $bind = array(
             'category_id' => $categoryId,
             'price' => $this->_request->price,
@@ -292,6 +291,24 @@ class Manager_ProductsController extends Eve_Controller_AdminAction
             $this->_products->update(array('order' => $index), $id);
         }
 
+        echo json_encode(array(
+            'status' => true,
+        ));
+    }
+
+    public function savePriceAction()
+    {
+        $id = $this->_request->id;
+        $price = $this->_request->price;
+
+        if (empty($id)) {
+            echo json_encode(array(
+                'status' => false,
+            ));
+            return;
+        }
+
+        $this->_products->update(array('price' => $price), $id);
         echo json_encode(array(
             'status' => true,
         ));

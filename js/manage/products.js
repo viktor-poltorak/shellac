@@ -9,6 +9,15 @@ var Products = Class({
         this.section.find('.toggle-product').on('click', function () {
             that.toggleProduct($(this));
         });
+
+        this.section.find('.manager-list-save-price').on('click', function () {
+            var button = $(this);
+            that.savePrice(button);
+        });
+
+        this.section.find('.manager-list-product-price').on('keyup', function () {
+            $(this).parent().find('.manager-list-save-price').prop('disabled', false);
+        });
     },
     initSortCategories: function () {
         var that = this;
@@ -49,5 +58,18 @@ var Products = Class({
                 item.find('img').attr('src', image);
             }
         });
+    },
+    savePrice: function (button) {
+        button.prop('disabled', true);
+        var row = $(button).closest('.manager-list');
+        var id = row.data('id');
+        var price = row.find('.manager-list-product-price').val();
+
+        $.post('/manager/products/save-price', {id: id, price: price}, function (response) {
+            button.prop('disabled', true);
+        }).error(function () {
+            alert('Ошибка при сохранении');
+        });
+
     }
 });

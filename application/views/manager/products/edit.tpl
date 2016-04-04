@@ -37,10 +37,6 @@
                     <input type="text" id="title" name="title[ru]" value="{$request->title.ru}" />
                 </div>
                 <div class="form-item">
-                    <label>Цена:</label>
-                    <input type="text" id="title" name="price" value="{$request->price}" />
-                </div>
-                <div class="form-item">
                     <label>Кратное описание:</label>
                     <textarea type="text" name="description[ru]">{$request->description.ru}</textarea>
                 </div>
@@ -61,10 +57,6 @@
                 <div class="form-item">
                     <label>Название:</label>
                     <input type="text" id="title" name="title[en]" value="{$request->title.en}" />
-                </div>
-                <div class="form-item">
-                    <label>Цена:</label>
-                    <input type="text" id="title" name="price" value="{$request->price}" />
                 </div>
                 <div class="form-item">
                     <label>Кратное описание:</label>
@@ -89,10 +81,6 @@
                     <input type="text" id="title" name="title[ua]" value="{$request->title.ua}" />
                 </div>
                 <div class="form-item">
-                    <label>Цена:</label>
-                    <input type="text" id="title" name="price" value="{$request->price}" />
-                </div>
-                <div class="form-item">
                     <label>Кратное описание:</label>
                     <textarea type="text" name="description[ua]">{$request->description.ua}</textarea>
                 </div>
@@ -110,7 +98,10 @@
                 </div>
             </div>
 
-
+            <div class="form-item">
+                <label>Цена:</label>
+                <input type="text" id="title" name="price" value="{$request->price}" />
+            </div>
             <div class="form-item">
                 <label>Категория:</label>
                 <select name="category_id">

@@ -26,6 +26,9 @@
                     <a href="/manager/products/edit/id/{$item->product_id}/">{$item->title}</a>&nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="manager-list-controls">
+                    <input type="text" class="manager-list-product-price" name="price[{$item->pruduct_id}]" value="{$item->price}" />
+                    <button class="manager-list-save-price" disabled="disabled">Cохранить</button>
+
                     <a href="/manager/products/edit/id/{$item->product_id}">
                         <img src="/images/admin/edit.png" alt="Редактировать" />
                     </a>
