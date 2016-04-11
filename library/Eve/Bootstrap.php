@@ -106,6 +106,7 @@ class Bootstrap
 
     public function getDb()
     {
+        $postfix = '';
         if (file_exists('_server')) {
             $postfix = trim(file_get_contents('_server'));
         }
