@@ -99,9 +99,14 @@ class Manager_CatalogController extends Eve_Controller_AdminAction
     {
         $id = (int) $this->_request->id;
         if ($id) {
-            $bind = array('name' => $this->_request->name,
+            $bind = array(
+                'name' => $this->_request->name,
                 'name_ru' => $this->_request->name_ru,
-                'name_ua' => $this->_request->name_ua);
+                'name_ua' => $this->_request->name_ua,
+                'description' => $this->_request->description,
+                'description_ru' => $this->_request->description_ru,
+                'description_ua' => $this->_request->description_ua
+            );
             $this->_categories->update($bind, $id);
         }
         $this->_redirect('/manager/catalog');

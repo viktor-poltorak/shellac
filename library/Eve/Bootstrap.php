@@ -158,8 +158,9 @@ class Bootstrap
             $dir = opendir('application/modules/');
             $modules = array();
             while ($subDir = readdir($dir)) {
-                if (!strstr($subDir, '.') && $subDir != 'default')
+                if (!strstr($subDir, '.') && $subDir != 'default') {
                     $modules[] = $subDir;
+                }
             }
             $moduleSession->modules = $modules;
         }

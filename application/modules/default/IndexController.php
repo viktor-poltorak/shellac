@@ -47,8 +47,9 @@ class IndexController extends Eve_Controller_Action
         $settings = new Settings();
 
         $this->_setPageTitle($settings->getByName('title') . ' : ' . $product->title);
-        $this->_assign('keywords', $product->keywords);
-        $this->_assign('meta', $product->meta);
+
+        $this->setPageDescription($product->category_id);
+
         $this->_assign('curCat', $product->category_id);
         $this->_assign('product', $product);
         $this->_display('products/show.tpl');
@@ -61,11 +62,29 @@ class IndexController extends Eve_Controller_Action
         if ($id == 0) {
             $this->_redirect('/404');
         }
+
+        $this->setPageDescription($id);
+
         $model = new Products();
         $products = $model->getAll($this->_lang->getCurrentCode(), 'all', $id, true);
         $this->_assign('products', $products);
         $this->_assign('curCat', $id);
         $this->_display('products/list.tpl');
+    }
+
+    protected function setPageDescription($categoryId)
+    {
+        $categoriesModel = new Categories();
+        $category = $categoriesModel->load($categoryId);
+        $curLang = $this->_lang->getCurrentCode();
+        $descriptionKey = 'description';
+        if ($curLang != 'en') {
+            $descriptionKey .= '_' . $curLang;
+        }
+
+        if (!empty($category->$descriptionKey)) {
+            $this->_assign('description', $category->$descriptionKey);
+        }
     }
 
 }

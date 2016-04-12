@@ -35,7 +35,7 @@
             Отзывы
         </a>
     </div>
-    <div class="manager-menu-icon">
+   {* <div class="manager-menu-icon">
         <a href="/manager/categories/">
             <img src="/images/admin/icons/settings.png" alt="" />
             Категории
@@ -46,5 +46,5 @@
             <img height="64" width="64" src="/images/admin/icons/catalog.png" alt="" />
             Товары
         </a>
-    </div>
+    </div>*}
 </div>

@@ -33,18 +33,24 @@
                 <div class="form-item">
                     <label>Название:</label>
                     <input type="text" id="title" name="name_ru" value="{$request->name_ru}" />
+                    <label>Page description:</label>
+                    <textarea class="page-description"  name="description_ru">{$request->description_ru}</textarea>
                 </div>
             </div>
             <div id="tabs-2" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <div class="form-item">
                     <label>Название:</label>
                     <input type="text" id="title" name="name" value="{$request->name}" />
+                    <label>Page description:</label>
+                    <textarea class="page-description"  name="description">{$request->description}</textarea>
                 </div>
             </div>
             <div id="tabs-3" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <div class="form-item">
                     <label>Название:</label>
                     <input type="text" id="title" name="name_ua" value="{$request->name_ua}" />
+                    <label>Page description:</label>
+                    <textarea class="page-description" name="description_ua">{$request->description_ua}</textarea>
                 </div>
             </div>
         </div>
