@@ -5,6 +5,13 @@ var Catalog = Class({
         this.section = $(section);
 
         this.initSortCategories();
+
+        this.section.find('.remove-category').on('click', function () {
+            var href = $(this).data('href');
+            if (confirm("Вы действительно хотите удалить категорию?")) {
+                document.location = href;
+            }
+        });
     },
     initSortCategories: function () {
         var that = this;

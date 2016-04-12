@@ -17,7 +17,7 @@
                     <a href="/manager/products/list/id/{$item->category_id}">
                         <img src="/images/admin/edit.png" alt="Продукты" />
                     </a>
-                    <a href="/manager/catalog/delete/id/{$item->category_id}">
+                    <a href="javascript:" class="remove-category" data-href="/manager/catalog/delete/id/{$item->category_id}">
                         <img src="/images/admin/delete.png" alt="Удалить" />
                     </a>
                 </div>
