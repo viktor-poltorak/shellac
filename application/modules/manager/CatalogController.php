@@ -124,7 +124,7 @@ class Manager_CatalogController extends Eve_Controller_AdminAction
     public function updateOrderAction()
     {
         $orders = $this->_request->orders;
-
+        header('Content-Type: application/json');
         if (empty($orders)) {
             echo json_encode(array(
                 'status' => false,

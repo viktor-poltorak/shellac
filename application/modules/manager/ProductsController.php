@@ -145,6 +145,31 @@ class Manager_ProductsController extends Eve_Controller_AdminAction
         $this->_redirect('/manager/products/edit/id/' . $this->_request->id);
     }
 
+    public function removeImageAction()
+    {
+        $id = $this->_request->id;
+        $key = $this->_request->key;
+
+        header('Content-Type: application/json');
+        $product = $this->_products->load($id);
+        if(!$product || !$key) {
+            echo json_encode(array('status' => false));
+            return;
+        }
+
+        $this->deleteImage($product->{$key});
+        $bind = array(
+            $key => '',
+        );
+        $this->_products->update($bind, $id);
+
+        echo json_encode(array(
+            'status' => true,
+            'key' => $key,
+            'id' => $id
+        ));
+    }
+
     public function processImage($name)
     {
         if (!empty($_FILES[$name]) && !empty($_FILES[$name]['tmp_name'])) {
@@ -254,6 +279,8 @@ class Manager_ProductsController extends Eve_Controller_AdminAction
             $product = $this->_products->load($id);
             $catId = $product->category_id;
             $this->deleteImage($product->image);
+            $this->deleteImage($product->image_1);
+            $this->deleteImage($product->image_2);
             $this->_products->deleteInfo($id);
             $this->_products->delete($id);
             $this->_redirect('/manager/products/list/id/' . $catId);
@@ -301,6 +328,7 @@ class Manager_ProductsController extends Eve_Controller_AdminAction
         $id = $this->_request->id;
         $price = $this->_request->price;
 
+        header('Content-Type: application/json');
         if (empty($id)) {
             echo json_encode(array(
                 'status' => false,

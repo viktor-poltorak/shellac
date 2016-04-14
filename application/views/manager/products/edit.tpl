@@ -119,18 +119,28 @@
             {if $request->image != ''}
                 <div class="form-item">
                     <img width="150" src="/images/products/{$request->image}" />
-                    {if $request->image_1 != ''}
-                        <img width="150" src="/images/products/{$request->image_1}" />
-                    {/if}
-                    {if $request->image_2 != ''}
-                        <img width="150" src="/images/products/{$request->image_2}" />
-                    {/if}
                 </div>
             {/if}
 
+            {if $request->image_1 != ''}
+                <div class="form-item" data-url="/manager/products/remove-image/id/{$request->product_id}"  data-key="image_1">
+                    <img width="150" src="/images/products/{$request->image_1}" />
+                    <button class="remove-image">Удалить</button>
+                </div>
+            {/if}
+            {if $request->image_2 != ''}
+                <div class="form-item" data-url="/manager/products/remove-image/id/{$request->product_id}"  data-key="image_2">
+                    <img width="150" src="/images/products/{$request->image_2}" />
+                    <button class="remove-image">Удалить</button>
+                </div>
+            {/if}
             <div>
                 <input type="submit" value="Сохранить" />
             </div>
         </div>
     </form>
 </div>
+<script src="/js/manage/editProduct.js"></script>
+<script>
+    var editProduct = new EditProduct('.manager-content');
+</script>
