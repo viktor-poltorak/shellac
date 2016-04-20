@@ -49,6 +49,7 @@ class IndexController extends Eve_Controller_Action
         $this->_setPageTitle($settings->getByName('title') . ' : ' . $product->title);
 
         $this->setPageDescription($product->category_id);
+        $this->_assign('keywords', $product->keywords);
 
         $this->_assign('curCat', $product->category_id);
         $this->_assign('product', $product);

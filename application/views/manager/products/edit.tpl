@@ -117,8 +117,9 @@
                 <input type="file" name="image_2"  />
             </div>
             {if $request->image != ''}
-                <div class="form-item">
+                <div class="form-item"  data-url="/manager/products/remove-image/id/{$request->product_id}"  data-key="image">
                     <img width="150" src="/images/products/{$request->image}" />
+                    <button class="remove-image">Удалить</button>
                 </div>
             {/if}
 
