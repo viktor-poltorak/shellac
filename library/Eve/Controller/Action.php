@@ -62,11 +62,11 @@ class Eve_Controller_Action extends Zend_Controller_Action
         $this->_assign('languages', $this->_languages);
 
         $this->_assign('currentLang', $this->_lang->getCurrentCode());
-
+        
         // set default site skin
         $skins = new Skins();
         $this->_setSkin($skins->getDefault()->alias);
-        
+
         if (Auth::isLogged()) {
             $this->_updateLastSeen(Auth::getAuthInfo()->user_id);
             $this->_user_id = Auth::getAuthInfo()->user_id;

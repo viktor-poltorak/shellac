@@ -85,25 +85,57 @@ body{
     position: relative;
 }
 
-.navigation-bar{
-    position: absolute;
-    top:0;
-    left: 39px;
-    width: 34px;
-    background-color: #1E4B88;
-}
-
 .navigation-bar img{
     padding: 9px
 }
 
 .info-block-text{
-    background-image: url('../images/info-text-bg.png');
+    /*background-image: url('../images/info-text-bg.png');*/
+    background-color: #F1898D;
     width: 386px;
     height: 87px;
     display: table-cell;
     vertical-align: middle;
     padding-left: 15px;
+}
+
+.rose-text{
+    color: #ff6666;
+    font-size: 18px;
+    line-height: 15px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.navigation-bar{
+    position: absolute;
+    top:0;
+    left: 39px;
+    width: 34px;
+    background-color: #F1898D;
+}
+
+.quality-block{
+    height: 87px;
+    width: 171px;
+    /*background-image: url('../images/quality-bg.jpg');*/
+    background-color: #F1898D;
+    text-align: right;
+}
+
+.banner-text{
+    width: 162px;
+    height: 87px;
+    /*background-image: url('../images/banner-text-bg.png');*/
+    background-color: white;
+    text-align: left;
+    opacity: 0.7;
+}
+
+
+.right-banner a{
+    color: #F1898D;
+    text-decoration: underline;
 }
 
 .info-title{
@@ -162,13 +194,6 @@ body{
     margin-bottom: 34px;
 }
 
-.quality-block{
-    height: 87px;
-    width: 171px;
-    background-image: url('../images/quality-bg.jpg');
-    text-align: right;
-}
-
 .quality-block div{
     padding-right: 17px;
     padding-left: 5px;
@@ -193,13 +218,13 @@ body{
 }
 
 .text-logo{
-    color: #184888;
+    color: #F1898D;
     font-size: 21px;
     font-weight: bold;
 }
 
 .site-text{
-    color: #F09010;
+    color: #F1898D;
     margin-bottom: 25px;
 }
 
@@ -208,14 +233,6 @@ body{
     width: 538px;
     height: 226px;
     background-repeat: no-repeat;
-}
-
-.banner-text{
-    width: 162px;
-    height: 87px;
-    background-image: url('../images/banner-text-bg.png');
-    text-align: left;
-    opacity: 0.9;
 }
 
 .banner-text div{
@@ -272,7 +289,7 @@ body{
 
 .feature-box{
     width: 138px;
-    background-color: #0A1D36;
+    background-color: #F1898D;
 }
 
 .features .last{
@@ -285,13 +302,14 @@ body{
 
 .right-banner{
     width: 178px;
-    padding-bottom: 10px;
+    border: 1px solid #F1898D;
 }
 
 .banner-content{
-    background-color: #F09010;
-    padding: 5px 10px 0;
+    background-color: #D1DAE7;
+    padding: 5px 12px 6px;
     min-height: 35px;
+    color: #F1898D;
 }
 
 .banner-content img{
@@ -311,7 +329,7 @@ body{
     overflow: hidden;
     padding: 0 0 17px 14px;
     /*color: #152E5A;*/
-    color: #FFFFFF;
+    color: #F1898D;
 }
 
 .feedback{
@@ -378,11 +396,6 @@ body{
 
 #order_second{
     display: none;
-}
-
-.right-banner a{
-    color: #FFFFFF;
-    text-decoration: underline;
 }
 
 .product .addition-image img{

@@ -30,7 +30,7 @@
                     <div class="navigation-bar">
                         <a href="?lang=en"><img src="/images/flags/gb.png"/></a>
                         <a href="?lang=ru"><img src="/images/flags/ru.png"/></a>
-                        <a href="?lang=ua"><img src="/images/flags/ua.png"/></a>
+                        <a href="?lang=ua"><img src="/images/flags/by.gif"/></a>
                     </div>
                 </div>
                 <div class="head-line">
@@ -40,12 +40,12 @@
                         </div>
                     </div>
                     <div class="block">
-                        <div id="for_office" class="banner-text white-text"><div>{$leftBlue}</div></div>
+                        <div id="for_office" class="banner-text rose-text"><div>{$leftBlue}</div></div>
                     </div>
                     <div class="block last">
                         <div class="info-block">
                             <div class="info-block-text">
-                                <div class="info-title">{t text="HAVE A QUESTION? CALL"}!</div>
+                                <div class="info-title">{$textPhone}</div>
                                 <div class="info-text">{$contactPhone}</div>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                 </div>
                 <div class="right-col">
                     <div class="right-banner">
-                        <img alt="" src="/images/banner-top.png" />
+                       {* <img alt="" src="/images/banner-top.png" />*}
                         <div class="banner-content">
                             <img alt="" src="/images/presentation-ico.png" />
                             <p id="order_first">{t text="Order a consultation"}</p>
@@ -75,7 +75,7 @@
                             <img alt="" src="/images/feedback-icon.jpg" />
                             <p><a href="/feedback">{t text="Feedback"}</a></p>
                         </div>
-                        <img alt="" src="/images/banner-bottom.png" />
+                       {* <img alt="" src="/images/banner-bottom.png" />*}
                     </div>
                 </div>
             </div>
