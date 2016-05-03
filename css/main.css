@@ -40,6 +40,10 @@ body{
     width: 1177px;
 }
 
+.hidden {
+    display: none;
+}
+
 .header{
     background-image: url('../images/header-background.jpg');
     background-repeat: no-repeat;

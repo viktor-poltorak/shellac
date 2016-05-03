@@ -61,7 +61,7 @@
                 </div>
                 <div class="right-col">
                     <div class="right-banner">
-                       {* <img alt="" src="/images/banner-top.png" />*}
+                        {* <img alt="" src="/images/banner-top.png" />*}
                         <div class="banner-content">
                             <img alt="" src="/images/presentation-ico.png" />
                             <p id="order_first">{t text="Order a consultation"}</p>
@@ -75,7 +75,7 @@
                             <img alt="" src="/images/feedback-icon.jpg" />
                             <p><a href="/feedback">{t text="Feedback"}</a></p>
                         </div>
-                       {* <img alt="" src="/images/banner-bottom.png" />*}
+                        {* <img alt="" src="/images/banner-bottom.png" />*}
                     </div>
                 </div>
             </div>
@@ -88,11 +88,24 @@
             </div>
         </div>
         <script>
-            var slides =  {literal} {{/literal}
+            var slides =   {literal} {{/literal}
                 bannerOne: '/images/uploads/{$settings->getByName('slideOne')}',
                 bannerTwo: '/images/uploads/{$settings->getByName('slideTwo')}'
             {literal} }{/literal}
         </script>
         <script src="/js/main.js"></script>
+        <div class="hidden">
+            <!--LiveInternet counter--><script type="text/javascript"><!--
+    document.write("<a href='//www.liveinternet.ru/click' " +
+                        "target=_blank><img src='//counter.yadro.ru/hit?t27.6;r" +
+                        escape(document.referrer) + ((typeof (screen) == "undefined") ? "" :
+                        ";s" + screen.width + "*" + screen.height + "*" + (screen.colorDepth ?
+                                screen.colorDepth : screen.pixelDepth)) + ";u" + escape(document.URL) +
+                        ";" + Math.random() +
+                        "' alt='' title='LiveInternet: показано количество просмотров и" +
+                        " посетителей' " +
+                        "border='0' width='88' height='120'><\/a>")
+                //--></script><!--/LiveInternet-->
+        </div>
     </body>
 </html>
