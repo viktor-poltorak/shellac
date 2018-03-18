@@ -137,7 +137,7 @@ abstract class Eve_Model_Abstract extends Zend_Db_Table_Abstract
      * @param array $bind
      * @return int
      */
-    public function insert($bind)
+    public function insert(array $bind)
     {
         $this->getAdapter()->insert($this->_name, $bind);
 
@@ -150,7 +150,7 @@ abstract class Eve_Model_Abstract extends Zend_Db_Table_Abstract
      * @param int $id
      * @return bool | int
      */
-    public function update($bind, $id)
+    public function update(array $bind, $id)
     {
         return $this->getAdapter()->update($this->_name, $bind, $this->getAdapter()->quoteInto($this->_id_field . ' = ?', $id));
     }

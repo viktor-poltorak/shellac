@@ -5,3 +5,6 @@
 /tmp/cache/*
 /configs/database.xml
 _server
+/logs/
+/images/products/
+/images/uploads/

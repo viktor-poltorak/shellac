@@ -2,12 +2,12 @@
 <configuration>
 
     <config>
-        <encoding>utf-8</encoding>
-        <from>
-            <email>support@619.by</email>
-            <first_name>Служба</first_name>
-            <last_name>Поддержки</last_name>
-        </from>
+		<encoding>utf-8</encoding>
+		<from>
+			<email>support@619.by</email>
+			<first_name>Служба</first_name>
+			<last_name>Поддержки</last_name>
+		</from>
     </config>
 
 </configuration>
