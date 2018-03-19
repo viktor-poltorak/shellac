@@ -140,4 +140,36 @@ class Manager_CatalogController extends Eve_Controller_AdminAction
             'status' => true,
         ));
     }
+
+    public function toggleAction()
+    {
+        header('Content-Type: application/json');
+        $id = (int) $this->_request->id;
+        if ((!$id)) {
+            echo json_encode(array(
+                'status' => false,
+            ));
+            return;
+        }
+        $item = $this->_categories->load($id);
+
+        if (!$item) {
+            echo json_encode(array(
+                'status' => false,
+            ));
+            return;
+        }
+        $bind = array(
+            'visible' => (empty($item->visible)) ? 1 : 0,
+        );
+
+        $this->_categories->update($bind, $id);
+
+        echo json_encode(array(
+            'status' => true,
+            'visible' => $bind['visible'],
+        ));
+        return;
+    }
+
 }

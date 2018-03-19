@@ -57,8 +57,9 @@ class Manager_CategoriesController extends Eve_Controller_AdminAction
     public function editAction()
     {
         $id = (int) $this->_request->id;
-        if ((!$id))
+        if ((!$id)) {
             $this->_redirect('/manager/categories/');
+        }
         $item = $this->_categories->load($id);
         $this->_assign('request', $item);
         $this->_display('categories/edit.tpl');

@@ -43,7 +43,7 @@ class Eve_Plugin_Dispatcher extends Zend_Controller_Plugin_Abstract
 
         //Categories
         $categoriesModel = new Categories();
-        $categories = $categoriesModel->getAll();
+        $categories = $categoriesModel->getAll(true);
         $curLang = $language->getCurrentCode();
         foreach ($categories as &$cat) {
             if ($curLang != 'en') {

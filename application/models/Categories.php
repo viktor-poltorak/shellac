@@ -11,15 +11,19 @@ class Categories extends Eve_Model_Abstract
     public $_name = 'product_categories';
     protected $_id_field = 'category_id';
 
-    public function getAll()
+    public function getAll($onlyVisible = false)
     {
-        return $this->select()->order('order')->query()->fetchAll();
+        $select = $this->select()->order('order');
+        if($onlyVisible) {
+            $select->where('visible=1');
+        }
+        return $select->query()->fetchAll();
     }
 
     public function getByParentId($pid)
     {
         $select = $this->select();
-        $select->where('parent_id=?', $pid);
+        $select->where('parent_id=? and visible=1', $pid);
         return $select->query()->fetchAll();
     }
 

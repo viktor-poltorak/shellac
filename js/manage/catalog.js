@@ -6,6 +6,11 @@ var Catalog = Class({
 
         this.initSortCategories();
 
+        var that = this;
+        this.section.find('.toggle-category').on('click', function () {
+            that.toggleCategory($(this));
+        });
+
         this.section.find('.remove-category').on('click', function () {
             var href = $(this).data('href');
             if (confirm("Вы действительно хотите удалить категорию?")) {
@@ -40,5 +45,17 @@ var Catalog = Class({
             orders.push($(items[i]).data('id'));
         }
         $.post('/manager/catalog/update-order', {orders: orders});
+    },
+    toggleCategory: function (item) {
+        var id = item.data('id');
+        $.post('/manager/catalog/toggle', {id: id}, function (response) {
+            var image = '/images/admin/star-off.png';
+            if (response.visible == 1) {
+                image = '/images/admin/star.png';
+            }
+            if (response.status) {
+                item.find('img').attr('src', image);
+            }
+        });
     }
 });

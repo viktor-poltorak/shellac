@@ -38,9 +38,7 @@ class Product_IndexController extends Eve_Controller_Action
         $product = $this->_products->load($id);
 
         $product = $this->_calcDiscount($product);
-
         $this->_products->updateView($id);
-
         $leftMenu = $this->_categories->getByParentId($product->category_id);
         if (!$leftMenu) {
             $leftMenu = $this->_categories->getByParentId(0);

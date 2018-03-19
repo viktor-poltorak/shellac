@@ -12,40 +12,40 @@
     </div>
     <div class="sort-products">
         {foreach from=$products item=item}
-            <div class="manager-list{cycle values=', gray-bg'}"  data-id="{$item->product_id}">
-                <div class="manager-list-image">
-                    <a href="javascript:" class="toggle-product" data-id="{$item->product_id}">
-                        {if $item->visible}
-                            <img src="/images/admin/star.png" alt="" />
-                        {else}
-                            <img src="/images/admin/star-off.png" alt="" />
-                        {/if}
-                    </a>
-                </div>
-                <div class="manager-list-content">
-                    <a href="/manager/products/edit/id/{$item->product_id}/">{$item->title}</a>&nbsp;&nbsp;&nbsp;
-                </div>
-                <div class="manager-list-controls">
-                    <input type="text" class="manager-list-product-price" name="price[{$item->pruduct_id}]" value="{$item->price}" />
-                    <button class="manager-list-save-price" disabled="disabled">Cохранить</button>
-
-                    <a href="/manager/products/edit/id/{$item->product_id}">
-                        <img src="/images/admin/edit.png" alt="Редактировать" />
-                    </a>
-                    <a href="/manager/products/delete/id/{$item->product_id}">
-                        <img src="/images/admin/delete.png" alt="Удалить" />
-                    </a>
-                </div>
-            </div>
-        {foreachelse}
-            <div class="manager-list">
-                <div class="manager-list-image">
+        <div class="manager-list{cycle values=', gray-bg'}"  data-id="{$item->product_id}">
+            <div class="manager-list-image">
+                <a href="javascript:" class="toggle-product" data-id="{$item->product_id}">
+                    {if $item->visible}
+                    <img src="/images/admin/star.png" alt="" />
+                    {else}
                     <img src="/images/admin/star-off.png" alt="" />
-                </div>
-                <div class="manager-list-content">
-                    Никаких продуктов нет.
-                </div>
+                    {/if}
+                </a>
             </div>
+            <div class="manager-list-content">
+                <a href="/manager/products/edit/id/{$item->product_id}/">{$item->title}</a>&nbsp;&nbsp;&nbsp;
+            </div>
+            <div class="manager-list-controls">
+                <input type="text" class="manager-list-product-price" name="price[{$item->pruduct_id}]" value="{$item->price}" />
+                <button class="manager-list-save-price" disabled="disabled">Cохранить</button>
+
+                <a href="/manager/products/edit/id/{$item->product_id}">
+                    <img src="/images/admin/edit.png" alt="Редактировать" />
+                </a>
+                <a href="/manager/products/delete/id/{$item->product_id}">
+                    <img src="/images/admin/delete.png" alt="Удалить" />
+                </a>
+            </div>
+        </div>
+        {foreachelse}
+        <div class="manager-list">
+            <div class="manager-list-image">
+                <img src="/images/admin/star-off.png" alt="" />
+            </div>
+            <div class="manager-list-content">
+                Никаких продуктов нет.
+            </div>
+        </div>
         {/foreach}
     </div>
 </div>

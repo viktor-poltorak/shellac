@@ -1,11 +1,9 @@
 <?php
 
 /**
- * 	Generic controller
+ * Generic controller
  *
- * @author Alex Oleshkevich <alex.oleshkevich@gmail.com>
  * @version 0.2
- * @copyright  Copyright (c) 2009 Alex Oleshkevich
  * @package Eve
  * @license  GPLv3
  */
@@ -62,7 +60,7 @@ class Eve_Controller_Action extends Zend_Controller_Action
         $this->_assign('languages', $this->_languages);
 
         $this->_assign('currentLang', $this->_lang->getCurrentCode());
-        
+
         // set default site skin
         $skins = new Skins();
         $this->_setSkin($skins->getDefault()->alias);

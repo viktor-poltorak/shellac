@@ -59,7 +59,7 @@ class IndexController extends Eve_Controller_Action
     public function categoryAction()
     {
         $id = (int) $this->_getParam('id');
-
+       
         if ($id == 0) {
             $this->_redirect('/404');
         }
