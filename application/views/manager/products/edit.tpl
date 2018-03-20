@@ -15,9 +15,9 @@
     </div>
     <form action="/manager/products/save/" method="post" class="form" enctype="multipart/form-data">
         {if $request->product_id}
-            <input name="id" value="{$request->product_id}" type="hidden" />
+            <input name="id" value="{$request->product_id|escape:'html'}" type="hidden" />
         {/if}
-        <input name="category_id" value="{$request->category_id}" type="hidden" />
+        <input name="category_id" value="{$request->category_id|escape:'html'}" type="hidden" />
 
         <div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
             <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
@@ -34,73 +34,73 @@
             <div id="tabs-1" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <div class="form-item">
                     <label>Название:</label>
-                    <input type="text" id="title" name="title[ru]" value="{$request->title.ru}" />
+                    <input type="text" id="title" name="title[ru]" value="{$request->title.ru|escape:'html'}" />
                 </div>
                 <div class="form-item">
                     <label>Кратное описание:</label>
-                    <textarea type="text" name="description[ru]">{$request->description.ru}</textarea>
+                    <textarea type="text" name="description[ru]">{$request->description.ru|escape:'html'}</textarea>
                 </div>
                 <div class="form-item">
                     <label>Описание:</label>
-                    <textarea type="text" id="product_description_ru" name="full_description[ru]">{$request->full_description.ru}</textarea>
+                    <textarea type="text" id="product_description_ru" name="full_description[ru]">{$request->full_description.ru|escape:'html'}</textarea>
                 </div>
                 <div class="form-item">
                     <label>Meta тег:</label>
-                    <input type="text" id="meta" name="meta[ru]" value="{$request->meta.ru}" />
+                    <input type="text" id="meta" name="meta[ru]" value="{$request->meta.ru|escape:'html'}" />
                 </div>
                 <div class="form-item">
                     <label>Ключевые слова:</label>
-                    <input type="text" id="keywords" name="keywords[ru]" value="{$request->keywords.ru}" />
+                    <input type="text" id="keywords" name="keywords[ru]" value="{$request->keywords.ru|escape:'html'}" />
                 </div>
             </div>
             <div id="tabs-2" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <div class="form-item">
                     <label>Название:</label>
-                    <input type="text" id="title" name="title[en]" value="{$request->title.en}" />
+                    <input type="text" id="title" name="title[en]" value="{$request->title.en|escape:'html'}" />
                 </div>
                 <div class="form-item">
                     <label>Кратное описание:</label>
-                    <textarea type="text" name="description[en]">{$request->description.en}</textarea>
+                    <textarea type="text" name="description[en]">{$request->description.en|escape:'html'}</textarea>
                 </div>
                 <div class="form-item">
                     <label>Описание:</label>
-                    <textarea type="text" id="product_description_en" name="full_description[en]">{$request->full_description.en}</textarea>
+                    <textarea type="text" id="product_description_en" name="full_description[en]">{$request->full_description.en|escape:'html'}</textarea>
                 </div>
                 <div class="form-item">
                     <label>Meta тег:</label>
-                    <input type="text" id="meta" name="meta[en]" value="{$request->meta.en}" />
+                    <input type="text" id="meta" name="meta[en]" value="{$request->meta.en|escape:'html'}" />
                 </div>
                 <div class="form-item">
                     <label>Ключевые слова:</label>
-                    <input type="text" id="keywords" name="keywords[en]" value="{$request->keywords.en}" />
+                    <input type="text" id="keywords" name="keywords[en]" value="{$request->keywords.en|escape:'html'}" />
                 </div>
             </div>
             <div id="tabs-3" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <div class="form-item">
                     <label>Название:</label>
-                    <input type="text" id="title" name="title[ua]" value="{$request->title.ua}" />
+                    <input type="text" id="title" name="title[ua]" value="{$request->title.ua|escape:'html'}" />
                 </div>
                 <div class="form-item">
                     <label>Кратное описание:</label>
-                    <textarea type="text" name="description[ua]">{$request->description.ua}</textarea>
+                    <textarea type="text" name="description[ua]">{$request->description.ua|escape:'html'}</textarea>
                 </div>
                 <div class="form-item">
                     <label>Описание:</label>
-                    <textarea type="text" id="product_description_ua" name="full_description[ua]">{$request->full_description.ua}</textarea>
+                    <textarea type="text" id="product_description_ua" name="full_description[ua]">{$request->full_description.ua|escape:'html'}</textarea>
                 </div>
                 <div class="form-item">
                     <label>Meta тег:</label>
-                    <input type="text" id="meta" name="meta[ua]" value="{$request->meta.ua}" />
+                    <input type="text" id="meta" name="meta[ua]" value="{$request->meta.ua|escape:'html'}" />
                 </div>
                 <div class="form-item">
                     <label>Ключевые слова:</label>
-                    <input type="text" id="keywords" name="keywords[ua]" value="{$request->keywords.ua}" />
+                    <input type="text" id="keywords" name="keywords[ua]" value="{$request->keywords.ua|escape:'html'}" />
                 </div>
             </div>
 
             <div class="form-item">
                 <label>Цена:</label>
-                <input type="text" id="title" name="price" value="{$request->price}" />
+                <input type="text" id="title" name="price" value="{$request->price|escape:'html'}" />
             </div>
             <div class="form-item">
                 <label>Категория:</label>

@@ -144,7 +144,7 @@ body{
 
 .info-title{
     color: #FFFFFF;
-    font-size: 15px;
+    font-size: 18px;
 }
 
 .info-text{
@@ -407,5 +407,8 @@ body{
 
 .product .addition-image img{
     max-width: 518px;
+}
 
+.price-block {
+    color: #F1898D;
 }

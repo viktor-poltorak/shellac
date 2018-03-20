@@ -15,7 +15,7 @@
     </div>
     <form action="/manager/catalog/{if $request->category_id}save{else}create-item{/if}/" method="post" class="form" enctype="multipart/form-data">
         {if $request->category_id}
-            <input name="id" value="{$request->category_id}" type="hidden" />
+            <input name="id" value="{$request->category_id|escape:'html'}" type="hidden" />
         {/if}
         <div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
             <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
@@ -32,25 +32,25 @@
             <div id="tabs-1" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <div class="form-item">
                     <label>Название:</label>
-                    <input type="text" id="title" name="name_ru" value="{$request->name_ru}" />
+                    <input type="text" id="title" name="name_ru" value="{$request->name_ru|escape:'html'}" />
                     <label>Page description:</label>
-                    <textarea class="page-description"  name="description_ru">{$request->description_ru}</textarea>
+                    <textarea class="page-description"  name="description_ru">{$request->description_ru | escape}</textarea>
                 </div>
             </div>
             <div id="tabs-2" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <div class="form-item">
                     <label>Название:</label>
-                    <input type="text" id="title" name="name" value="{$request->name}" />
+                    <input type="text" id="title" name="name" value="{$request->name|escape:'html'}" />
                     <label>Page description:</label>
-                    <textarea class="page-description"  name="description">{$request->description}</textarea>
+                    <textarea class="page-description"  name="description">{$request->description | escape}</textarea>
                 </div>
             </div>
             <div id="tabs-3" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <div class="form-item">
                     <label>Название:</label>
-                    <input type="text" id="title" name="name_ua" value="{$request->name_ua}" />
+                    <input type="text" id="title" name="name_ua" value="{$request->name_ua|escape:'html'}" />
                     <label>Page description:</label>
-                    <textarea class="page-description" name="description_ua">{$request->description_ua}</textarea>
+                    <textarea class="page-description" name="description_ua">{$request->description_ua | escape}</textarea>
                 </div>
             </div>
         </div>

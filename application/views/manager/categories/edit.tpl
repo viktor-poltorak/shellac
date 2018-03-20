@@ -1,5 +1,5 @@
 {if $error}
-    {sb_error text=$errors}
+{sb_error text=$errors}
 {/if}
 {include file='categories/inc/tabs.tpl'}
 <div class="manager-content">
@@ -15,7 +15,7 @@
     </div>
     <form action="/manager/categories/{if $request->category_id}save{else}create-item{/if}/" method="post" class="form" enctype="multipart/form-data">
         {if $request->category_id}
-            <input name="id" value="{$request->category_id}" type="hidden" />
+        <input name="id" value="{$request->category_id|escape:'html'}" type="hidden" />
         {/if}
         <div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
             <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
@@ -32,22 +32,22 @@
             <div id="tabs-1" class="ui-tabs-panel ui-widget-content ui-corner-bottom ">
                 <div class="form-item">
                     <label>Название:</label>
-                    <input type="text" id="title" name="name_ru" value="{$request->name_ru}" />
-                    <textarea name="description_ru">{$request->description_ru}</textarea>
+                    <input type="text" id="title" name="name_ru" value="{$request->name_ru|escape:'html'}" />
+                    <textarea name="description_ru">{$request->description_ru|escape:'html'}</textarea>
                 </div>
             </div>
             <div id="tabs-2" class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
                 <div class="form-item">
                     <label>Название:</label>
-                    <input type="text" id="title" name="name" value="{$request->name}" />
-                    <textarea name="description">{$request->description}</textarea>
+                    <input type="text" id="title" name="name" value="{$request->name|escape:'html'}" />
+                    <textarea name="description">{$request->description|escape:'html'}</textarea>
                 </div>
             </div>
             <div id="tabs-3" class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
                 <div class="form-item">
                     <label>Название:</label>
-                    <input type="text" id="title" name="name_ua" value="{$request->name_ua}" />
-                    <textarea name="description_ua">{$request->description_ua}</textarea>
+                    <input type="text" id="title" name="name_ua" value="{$request->name_ua|escape:'html'}" />
+                    <textarea name="description_ua">{$request->description_ua|escape:'html'}</textarea>
                 </div>
             </div>
         </div>

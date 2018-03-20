@@ -3,8 +3,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <title>{$pageTitle}</title>
-        <meta name="keywords" content="{$keywords}" />
-        <meta name="description" content="{$description}" />
+        <meta name="keywords" content="{$keywords|escape:'html'}" />
+        <meta name="description" content="{$description|escape:'html'}" />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="stylesheet" href="/css/main.css" type="text/css" />
         <script src="/js/libs/jquery.js"></script>
@@ -30,7 +30,7 @@
                     <div class="navigation-bar">
                         <a href="?lang=en"><img src="/images/flags/gb.png"/></a>
                         <a href="?lang=ru"><img src="/images/flags/ru.png"/></a>
-                        <a href="?lang=ua"><img src="/images/flags/by.gif"/></a>
+                        <a href="?lang=ua"><img src="/images/flags/ua.png"/></a>
                     </div>
                 </div>
                 <div class="head-line">
