@@ -32,22 +32,22 @@
             <div id="tabs-1" class="ui-tabs-panel ui-widget-content ui-corner-bottom ">
                 <div class="form-item">
                     <label>Название:</label>
-                    <input type="text" id="title" name="name_ru" value="{$request->name_ru|escape:'html'}" />
-                    <textarea name="description_ru">{$request->description_ru|escape:'html'}</textarea>
+                    <input type="text" id="title" name="name_ru" value="{$request->name_ru|stripslashes|escape:'html'}" />
+                    <textarea name="description_ru">{$request->description_ru|stripslashes|escape:'html'}</textarea>
                 </div>
             </div>
             <div id="tabs-2" class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
                 <div class="form-item">
                     <label>Название:</label>
-                    <input type="text" id="title" name="name" value="{$request->name|escape:'html'}" />
-                    <textarea name="description">{$request->description|escape:'html'}</textarea>
+                    <input type="text" id="title" name="name" value="{$request->name|stripslashes|escape:'html'}" />
+                    <textarea name="description">{$request->description|stripslashes|escape:'html'}</textarea>
                 </div>
             </div>
             <div id="tabs-3" class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
                 <div class="form-item">
                     <label>Название:</label>
                     <input type="text" id="title" name="name_ua" value="{$request->name_ua|escape:'html'}" />
-                    <textarea name="description_ua">{$request->description_ua|escape:'html'}</textarea>
+                    <textarea name="description_ua">{$request->description_ua|stripslashes|escape:'html'}</textarea>
                 </div>
             </div>
         </div>

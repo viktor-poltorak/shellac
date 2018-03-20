@@ -3,11 +3,11 @@
         <h1>{$product->title|escape:'html'}</h1>
         {if $product->image != ''}
             <div class="product-image">
-                <img src="/images/products/{$product->image}" alt="{$product->title|escape:'html'}" />
+                <img src="/images/products/{$product->image}" alt="{$product->title|stripslashes|escape:'html'}" />
             </div>
         {/if}
         {if $product->price}
-            <p class='price-block'>{$product->price|escape:'html'}</p>
+            <p class='price-block'>{$product->price|stripslashes|escape:'html'}</p>
         {/if}
         <p>{$product->description|stripslashes}</p>
     </div>
